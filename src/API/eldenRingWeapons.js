@@ -1,8 +1,12 @@
-const eldenRingWeapons = async (page) => {
+const eldenRingWeapons = async (page, name = null) => {
   try {
-    const response = await fetch(
-      `https://eldenring.fanapis.com/api/weapons?limit=30&page=${page ?? 0}`
-    );
+    let url = `https://eldenring.fanapis.com/api/weapons?limit=30&page=${
+      page ?? 0
+    }`;
+    if (name) {
+      url += `&name=${encodeURIComponent(name)}`;
+    }
+    const response = await fetch(url);
     const data = await response.json();
 
     return data;
@@ -11,4 +15,5 @@ const eldenRingWeapons = async (page) => {
     throw error;
   }
 };
+
 export default eldenRingWeapons;

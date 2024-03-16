@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import eldenRingWeapons from "../API/eldenRingWeapons";
 
 const useFetchWeapons = () => {
   const [weapons, setWeapons] = useState([]);
   const [page, setPage] = useState(0);
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const name = searchParams.get("name");
+
   useEffect(() => {
-    const fetchWeeapons = async () => {
-      const dataWeapons = await eldenRingWeapons(page);
+    const fetchWeapons = async () => {
+      const dataWeapons = await eldenRingWeapons(page, name);
       setWeapons(dataWeapons.data);
     };
 
-    fetchWeeapons();
-  }, [page]);
+    fetchWeapons();
+  }, [page, name, location.search]);
 
   useEffect(() => {
     if (weapons.length > 0) {

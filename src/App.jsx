@@ -1,10 +1,12 @@
 import WeaponsPage from "./pages/WeaponsPage";
-import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <WeaponsPage />
+      <Router>
+        <WeaponsPage />
+      </Router>
     </>
   );
 };

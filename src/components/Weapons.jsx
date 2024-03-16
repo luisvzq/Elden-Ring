@@ -1,56 +1,10 @@
 import PropTypes from "prop-types";
-import "../App.css";
 
-const customAttackNames = {
-  Phy: "Físico",
-  Mag: "Magia",
-  Fire: "Fuego",
-  Ligt: "Rayo",
-  Holy: "Sagrado",
-  Sor: "Encantamiento",
-  Crit: "Crítico",
-  Rng: "Rango",
-};
-
-const customAttributeNames = {
-  Str: "Fuerza",
-  Dex: "Destreza",
-  Int: "Inteligencia",
-  Fai: "Fe",
-  Arc: "Arcano",
-};
-
-const customCategoryNames = {
-  Axe: "Hacha",
-  Bow: "Arco",
-  Ballista: "Balista",
-  Claw: "Garras",
-  "Colossal Sword": "Espada colosal",
-  Crossbow: "Ballesta",
-  "Curved Greatsword": "Espadón curvo",
-  "Curved Sword": "Espada curva",
-  Dagger: "Daga",
-  Fist: "Puños",
-  Flail: "Mayal",
-  "Glintstone Staff": "Bastón de piedra refulgente",
-  Greataxe: "Gran hacha",
-  Greatbow: "Arco grande",
-  "Great Spear": "Lanza larga",
-  Greatsword: "Espadón",
-  Halberd: "Alabarda",
-  Hammer: "Martillo",
-  "Heavy Thrusting Sword": "Espada de embestida pesada",
-  "Light Bow": "Arco ligero",
-  Reaper: "Guadaña",
-  "Sacred Seal": "Sello sagrado",
-  Spear: "Lanza",
-  "Straight Sword": "Espada recta",
-  "Thrusting Sword": "Espada de embestida",
-  Torch: "Antorcha",
-  Twinblade: "Hoja doble",
-  Warhammer: "Gran martillo",
-  Whip: "Látigo",
-};
+import {
+  customAttackNames,
+  customAttributeNames,
+  customCategoryNames,
+} from "../customData/customNames.js";
 
 const Weapons = ({ weapons }) => {
   return (
@@ -58,8 +12,14 @@ const Weapons = ({ weapons }) => {
       {weapons.map((weapon) => {
         return (
           <div key={weapon.id} className="weapon border-solid	border-2">
-            <h1 className="text-3xl flex justify-center m-8"> {weapon.name}</h1>
-            <h2>{customCategoryNames[weapon.category]}</h2>
+            <h1 className="text-3xl flex justify-center m-8 text-center">
+              {" "}
+              {weapon.name}
+            </h1>
+            <h2 className="text-right">
+              {customCategoryNames[weapon.category]}
+            </h2>
+            {/* <h2>{weapon.category}</h2> */}
             <img
               className="flex justify-center m-8"
               src={
@@ -68,7 +28,7 @@ const Weapons = ({ weapons }) => {
               }
               alt={weapon.name}
             ></img>
-            <div className="dmg-scaling-req">
+            <div className="dmg-scaling-req text-center">
               <div className="dmg">
                 <h3 className="font-bold">Daño</h3>
                 <div className="attack">
@@ -84,11 +44,16 @@ const Weapons = ({ weapons }) => {
               <div className="scaling">
                 <h3 className="font-bold">Escalado</h3>
                 <div className="scales-with">
-                  {weapon.scalesWith.map((scaling) => (
-                    <p key={scaling.name}>
-                      {customAttributeNames[scaling.name]}: {scaling.scaling}
-                    </p>
-                  ))}
+                  {weapon.scalesWith.map(
+                    (scaling) =>
+                      scaling.scaling &&
+                      scaling.scaling !== "-" && (
+                        <p key={scaling.name}>
+                          {customAttributeNames[scaling.name]}:{" "}
+                          {scaling.scaling}
+                        </p>
+                      )
+                  )}
                 </div>
                 <h3 className="font-bold">Artibutos requeridos</h3>
                 <div className="req">
