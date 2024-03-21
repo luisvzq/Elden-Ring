@@ -5,8 +5,10 @@ const customAttackNames = {
   Ligt: "Rayo",
   Holy: "Sagrado",
   Sor: "Encantamiento",
+  Sorc: "Hechicería",
   Crit: "Crítico",
   Rng: "Rango",
+  Inc: "Encantamiento",
 };
 
 const customAttributeNames = {
@@ -15,6 +17,11 @@ const customAttributeNames = {
   Int: "Inteligencia",
   Fai: "Fe",
   Arc: "Arcano",
+  STR: "Fuerza",
+  DEX: "Destreza",
+  INT: "Inteligencia",
+  FAI: "Fe",
+  ARC: "Arcano",
 };
 
 const customCategoryNames = {

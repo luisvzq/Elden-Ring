@@ -1,46 +1,88 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
 import eldenRingWeapons from "../API/eldenRingWeapons";
-
+// import { useQuery, useQueryClient } from "react-query";
 const useFetchWeapons = () => {
+  let [, setSearchParams] = useSearchParams();
   const [weapons, setWeapons] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [name, setName] = useState("");
   const [page, setPage] = useState(0);
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const name = searchParams.get("name");
+  // const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const fetchWeapons = async () => {
-      const dataWeapons = await eldenRingWeapons(page, name);
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
+  // const fetchWeapons = async (newPage, newName) => {
+  //   const dataWeapons = useQuery({
+  //     queryKey: [newPage || page, newName || name],
+  //     queryFn: eldenRingWeapons(newPage || page, newName || name),
+  //   });
+  //   if (newPage) setPage(newPage);
+  //   if (newName) setName(newName);
+
+  //   setSearchParams({ name: newName || name, page: newPage || page });
+
+  //   if (dataWeapons?.data?.length > 0) {
+  //     dataWeapons?.data?.map((weapon) => {
+  //       weapon.image = weapon.image
+  //         ? weapon.image
+  //         : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
+  //       return weapon;
+  //     });
+  //   }
+  //   setWeapons(dataWeapons.data);
+  //   setTotal(dataWeapons.total);
+  // };
+
+  const fetchWeapons = useCallback(
+    async (newPage, newName) => {
+      const dataWeapons = await eldenRingWeapons(
+        newPage || page,
+        newName || name
+      );
+      if (newPage) setPage(newPage);
+      if (newName) setName(newName);
+
+      setSearchParams({ name: newName || name, page: newPage || page });
+
+      if (dataWeapons?.data?.length > 0) {
+        dataWeapons?.data?.map((weapon) => {
+          weapon.image = weapon.image
+            ? weapon.image
+            : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
+          return weapon;
+        });
+      }
       setWeapons(dataWeapons.data);
-    };
-
-    fetchWeapons();
-  }, [page, name, location.search]);
-
-  useEffect(() => {
-    if (weapons.length > 0) {
-      weapons.map((weapon) => {
-        weapon.image = weapon.image
-          ? weapon.image
-          : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
-        return weapon;
-      });
-    }
-  }, [weapons]);
+      setTotal(dataWeapons.total);
+    },
+    [page, name]
+  );
 
   const nextPage = () => {
-    if (page < 10) setPage(page + 1);
+    if (page >= 0) {
+      fetchWeapons(page + 1);
+      setPage(page + 1);
+    }
   };
   const backPage = () => {
-    if (!(page <= 0)) setPage(page - 1);
+    if (!(page <= 0)) {
+      fetchWeapons(page - 1);
+    }
   };
+  const numPages = Math.floor(total / 30);
 
   return {
     weapons,
+    page,
     nextPage,
     backPage,
+    numPages,
+    handleShearch: handleChange,
+    fetchWeapons,
   };
 };
+
 export default useFetchWeapons;

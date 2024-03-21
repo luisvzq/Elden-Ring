@@ -44,24 +44,36 @@ const Weapons = ({ weapons }) => {
               <div className="scaling">
                 <h3 className="font-bold">Escalado</h3>
                 <div className="scales-with">
-                  {weapon.scalesWith.map(
-                    (scaling) =>
-                      scaling.scaling &&
-                      scaling.scaling !== "-" && (
-                        <p key={scaling.name}>
-                          {customAttributeNames[scaling.name]}:{" "}
-                          {scaling.scaling}
-                        </p>
-                      )
-                  )}
-                </div>
-                <h3 className="font-bold">Artibutos requeridos</h3>
-                <div className="req">
-                  {weapon.requiredAttributes.map((req) => (
-                    <p key={req.name}>
-                      {customAttributeNames[req.name]}: {req.amount}
+                  {weapon.scalesWith.map((scaling) => (
+                    <p key={scaling.name}>
+                      {customAttributeNames[scaling.name]}
+                      {scaling.scaling !== undefined && scaling.scaling !== "-"
+                        ? `: ${scaling.scaling}`
+                        : " Ninguno"}
                     </p>
                   ))}
+                </div>
+
+                <h3 className="font-bold">Artibutos requeridos</h3>
+                <div className="req">
+                  {/* {weapon.requiredAttributes.map((req) => {
+                    if (req.name && req.name !== "-") {
+                      return (
+                        <p key={req.name}>
+                          {customAttributeNames[req.name]}: {req.amount}
+                        </p>
+                      );
+                    } else {
+                      return <p key={req.name}>Ninguno</p>;
+                    }
+                  })} */}
+                  {weapon.requiredAttributes.map((req) => {
+                    return (
+                      <p key={req.name}>
+                        {customAttributeNames[req.name]}: {req.amount}
+                      </p>
+                    );
+                  })}
                 </div>
                 <p>Peso: {weapon.weight}</p>
               </div>

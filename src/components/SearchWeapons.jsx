@@ -1,43 +1,10 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const SearchWeapons = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+const SearchWeapons = ({ handleShearch, name, fetchWeapons }) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    searchParams.set("name", searchValue);
-    setSearchParams(searchParams);
+    fetchWeapons("0");
   };
-
-  useEffect(() => {
-    const getWeaponFetch = async () => {
-      try {
-        const queryParams = searchParams.toString();
-
-        const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/weapons?${queryParams}`
-        );
-
-        if (!res.ok) {
-          throw new Error("Network response was not ok " + res.statusText);
-        }
-
-        const body = await res.json();
-        console.log(body);
-      } catch (error) {
-        console.error("Error:", error.message);
-      }
-    };
-
-    getWeaponFetch();
-  }, [searchParams]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,8 +12,8 @@ const SearchWeapons = () => {
         className="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
         type="text"
         id="name"
-        value={searchValue}
-        onChange={handleChange}
+        value={name}
+        onChange={handleShearch}
         placeholder="Buscar arma"
       />
       <button
@@ -57,6 +24,12 @@ const SearchWeapons = () => {
       </button>
     </form>
   );
+};
+
+SearchWeapons.propTypes = {
+  handleShearch: PropTypes.func,
+  name: PropTypes.string,
+  fetchWeapons: PropTypes.func,
 };
 
 export { SearchWeapons };
