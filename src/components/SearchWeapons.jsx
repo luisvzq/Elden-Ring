@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const SearchWeapons = ({ handleShearch, name, fetchWeapons }) => {
+const SearchWeapons = ({ handleSearch, name, fetchWeapons }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     fetchWeapons("0");
@@ -13,7 +13,7 @@ const SearchWeapons = ({ handleShearch, name, fetchWeapons }) => {
         type="text"
         id="name"
         value={name}
-        onChange={handleShearch}
+        onChange={handleSearch}
         placeholder="Buscar arma"
       />
       <button
@@ -27,7 +27,7 @@ const SearchWeapons = ({ handleShearch, name, fetchWeapons }) => {
 };
 
 SearchWeapons.propTypes = {
-  handleShearch: PropTypes.func,
+  handleSearch: PropTypes.func,
   name: PropTypes.string,
   fetchWeapons: PropTypes.func,
 };

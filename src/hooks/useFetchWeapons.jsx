@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import eldenRingWeapons from "../API/eldenRingWeapons";
-// import { useQuery, useQueryClient } from "react-query";
 
 const useFetchWeapons = () => {
   let [, setSearchParams] = useSearchParams();
@@ -39,13 +38,13 @@ const useFetchWeapons = () => {
   // };
 
   const fetchWeapons = useCallback(
-    async (newPage, newName) => {
+    async (newPage) => {
       const dataWeapons = await eldenRingWeapons(
         newPage || page,
-        newName || name
+        name // Usamos el término de búsqueda actualizado del estado
       );
       setPage(newPage || page);
-      setSearchParams({ name: newName || name, page: newPage || page });
+      setSearchParams({ name: name, page: newPage || page });
 
       if (dataWeapons?.data?.length > 0) {
         dataWeapons.data.forEach((weapon) => {

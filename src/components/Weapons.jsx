@@ -5,20 +5,127 @@ import {
   customAttributeNames,
   customCategoryNames,
 } from "../customData/customNames.js";
+// import {
+//   fixRequiredAttributes,
+//   fixedWeapons,
+// } from "../customData/fixedData.js";
 
 const Weapons = ({ weapons }) => {
-  const fixRequiredAttributes = (requiredAttr) => {
-    if (requiredAttr.name === "") {
-      return { ...requiredAttr, name: "Fai" };
+  // const fixRequiredAttributes = (requiredAttr) => {
+  //   if (requiredAttr.name === "") {
+  //     return { ...requiredAttr, name: "Fai" };
+  //   }
+  //   return requiredAttr;
+  // };
+  const weaponsWithCustomData = weapons.map((weapon) => {
+    if (weapon.name === "Serpentbone Blade") {
+      weapon.attack = [
+        { name: "Phy", amount: 120 },
+        { name: "Crit", amount: 100 },
+      ];
     }
-    return requiredAttr;
-  };
+    if (weapon.name === "Beastman's Cleaver") {
+      weapon.scalesWith = [{ name: "Str", scaling: "C" }];
+    }
+    if (weapon.name === "Monk's Flameblade") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "D" },
+        { name: "Dex", scaling: "D" },
+      ];
+    }
+    if (weapon.name === "Iron Ball") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "D" },
+        { name: "Dex", scaling: "E" },
+      ];
+    }
+    if (weapon.name === "Longhaft Axe") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "D" },
+        { name: "Dex", scaling: "D" },
+      ];
+    }
+    if (weapon.name === "Prince Of Death's Star") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "E" },
+        { name: "Int", scaling: "D" },
+        { name: "Fai", scaling: "D" },
+      ];
+    }
+    if (weapon.name === "Iron Greatsword") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "C" },
+        { name: "Dex", scaling: "E" },
+      ];
+    }
+    if (weapon.name === "Curved Club") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "C" },
+        { name: "Dex", scaling: "E" },
+      ];
+    }
+    if (weapon.name === "Celebrant's Rib-rake") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "E" },
+        { name: "Dex", scaling: "D" },
+      ];
+    }
+    if (weapon.name === "Crystal Spear") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "E" },
+        { name: "Dex", scaling: "D" },
+        { name: "Int", scaling: "E" },
+      ];
+    }
+    if (weapon.name === "Rotten Crystal Spear") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "E" },
+        { name: "Dex", scaling: "D" },
+        { name: "Int", scaling: "E" },
+      ];
+    }
+    if (weapon.name === "Celebrant's Skull") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "D" },
+        { name: "Dex", scaling: "D" },
+      ];
+    }
+    if (weapon.name === "Celebrant's Cleaver") {
+      weapon.scalesWith = [
+        { name: "Str", scaling: "D" },
+        { name: "Dex", scaling: "D" },
+      ];
+    }
+    if (weapon.name === "Sword Of St Trina") {
+      weapon.requiredAttributes = [
+        { name: "Str", amount: 10 },
+        { name: "Dex", amount: 12 },
+        { name: "Int", amount: 14 },
+      ];
+    }
+    if (weapon.name === "Sword Of Night And Flame") {
+      weapon.requiredAttributes = [
+        { name: "Str", amount: 12 },
+        { name: "Dex", amount: 12 },
+        { name: "Int", amount: 24 },
+        { name: "Fai", amount: 24 },
+      ];
+    }
+    if (weapon.name === "Treespear") {
+      weapon.requiredAttributes = [
+        { name: "Str", amount: 15 },
+        { name: "Dex", amount: 22 },
+        { name: "Fai", amount: 18 },
+      ];
+    }
+
+    return weapon;
+  });
   return (
     <>
-      {weapons.map((weapon) => {
-        const correctedRequiredAttributes = weapon.requiredAttributes
-          .map(fixRequiredAttributes)
-          .filter((req) => req.amount !== 0);
+      {weaponsWithCustomData.map((weapon) => {
+        // const correctedRequiredAttributes =
+        //   weapon.requiredAttributes.map.filter((req) => req.amount !== 0);
         return (
           <div key={weapon.id} className="weapon border-solid	border-2">
             <h1 className="text-3xl flex justify-center m-8 text-center">
@@ -76,7 +183,7 @@ const Weapons = ({ weapons }) => {
                       return <p key={req.name}>Ninguno</p>;
                     }
                   })} */}
-                  {correctedRequiredAttributes.map((req, index) => {
+                  {weapon.requiredAttributes.map((req, index) => {
                     return (
                       <p key={`${weapon.id}-${req.name}-${index}`}>
                         {customAttributeNames[req.name]}: {req.amount}

@@ -10,7 +10,7 @@ const WeaponsPage = () => {
     backPage,
     weapons,
     numPages,
-    handleShearch,
+    handleSearch,
     name,
     fetchWeapons,
   } = useFetchWeapons();
@@ -25,7 +25,7 @@ const WeaponsPage = () => {
         Lista de Armas de Elden Ring
       </h1>
       <SearchWeapons
-        handleShearch={handleShearch}
+        handleSearch={handleSearch}
         name={name}
         fetchWeapons={fetchWeapons}
       />
