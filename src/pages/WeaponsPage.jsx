@@ -32,7 +32,7 @@ const WeaponsPage = () => {
       <div className="grid grid-cols-6 m-10">
         {weapons.length > 0 && <Weapons weapons={weapons} />}
         <div>
-          {page !== 0 ? <button onClick={backPage}>Back</button> : null}
+          {page > 0 && <button onClick={backPage}>Back</button>}
           {page < numPages && <button onClick={nextPage}>Next</button>}
         </div>
       </div>

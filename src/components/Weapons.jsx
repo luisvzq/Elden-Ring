@@ -7,9 +7,18 @@ import {
 } from "../customData/customNames.js";
 
 const Weapons = ({ weapons }) => {
+  const fixRequiredAttributes = (requiredAttr) => {
+    if (requiredAttr.name === "") {
+      return { ...requiredAttr, name: "Fai" };
+    }
+    return requiredAttr;
+  };
   return (
     <>
       {weapons.map((weapon) => {
+        const correctedRequiredAttributes = weapon.requiredAttributes
+          .map(fixRequiredAttributes)
+          .filter((req) => req.amount !== 0);
         return (
           <div key={weapon.id} className="weapon border-solid	border-2">
             <h1 className="text-3xl flex justify-center m-8 text-center">
@@ -67,9 +76,9 @@ const Weapons = ({ weapons }) => {
                       return <p key={req.name}>Ninguno</p>;
                     }
                   })} */}
-                  {weapon.requiredAttributes.map((req) => {
+                  {correctedRequiredAttributes.map((req, index) => {
                     return (
-                      <p key={req.name}>
+                      <p key={`${weapon.id}-${req.name}-${index}`}>
                         {customAttributeNames[req.name]}: {req.amount}
                       </p>
                     );

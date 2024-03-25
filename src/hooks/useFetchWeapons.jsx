@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import eldenRingWeapons from "../API/eldenRingWeapons";
 // import { useQuery, useQueryClient } from "react-query";
+
 const useFetchWeapons = () => {
   let [, setSearchParams] = useSearchParams();
   const [weapons, setWeapons] = useState([]);
@@ -9,11 +10,12 @@ const useFetchWeapons = () => {
   const [name, setName] = useState("");
   const [page, setPage] = useState(0);
 
-  // const queryClient = useQueryClient();
-
   const handleChange = (e) => {
     setName(e.target.value);
   };
+
+  // const queryClient = useQueryClient();
+
   // const fetchWeapons = async (newPage, newName) => {
   //   const dataWeapons = useQuery({
   //     queryKey: [newPage || page, newName || name],
@@ -42,36 +44,36 @@ const useFetchWeapons = () => {
         newPage || page,
         newName || name
       );
-      if (newPage) setPage(newPage);
-      if (newName) setName(newName);
-
+      setPage(newPage || page);
       setSearchParams({ name: newName || name, page: newPage || page });
 
       if (dataWeapons?.data?.length > 0) {
-        dataWeapons?.data?.map((weapon) => {
+        dataWeapons.data.forEach((weapon) => {
           weapon.image = weapon.image
             ? weapon.image
             : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
-          return weapon;
         });
       }
       setWeapons(dataWeapons.data);
       setTotal(dataWeapons.total);
     },
-    [page, name]
+    [page, name, setSearchParams]
   );
 
   const nextPage = () => {
-    if (page >= 0) {
-      fetchWeapons(page + 1);
-      setPage(page + 1);
-    }
+    fetchWeapons(page + 1);
   };
+
   const backPage = () => {
-    if (!(page <= 0)) {
-      fetchWeapons(page - 1);
+    if (page > 0) {
+      setPage(page - 1);
     }
   };
+
+  useEffect(() => {
+    fetchWeapons(page);
+  }, [page, fetchWeapons]);
+
   const numPages = Math.floor(total / 30);
 
   return {
@@ -80,7 +82,7 @@ const useFetchWeapons = () => {
     nextPage,
     backPage,
     numPages,
-    handleShearch: handleChange,
+    handleSearch: handleChange,
     fetchWeapons,
   };
 };
