@@ -129,7 +129,7 @@ const Weapons = ({ weapons }) => {
         return (
           <div
             key={weapon.id}
-            className="weapon font-sans border-solid	border-2 bg-neutral-500 bg-opacity-75"
+            className="weapon font-sans bg-neutral-300 bg-opacity-40 rounded-xl shadow-2xl text-gray-900"
           >
             <div className="weapon-title flex items-center justify-center h-24">
               <h1 className="text-3xl flex justify-center m-8 text-center">

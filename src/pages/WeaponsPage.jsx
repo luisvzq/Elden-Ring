@@ -30,7 +30,7 @@ const WeaponsPage = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <h1 className="font-extrabold text-5xl m-20">
+      <h1 className="font-extrabold text-5xl m-20 text-gray-300">
         Lista de Armas de Elden Ring
       </h1>
       <SearchWeapons
