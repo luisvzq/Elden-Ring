@@ -8,7 +8,6 @@ const eldenRingWeapons = async (page, name = null) => {
     }
     const response = await fetch(url);
     const data = await response.json();
-    console.log("🚀 ~ eldenRingWeapons ~ data:", data);
 
     return data;
   } catch (error) {

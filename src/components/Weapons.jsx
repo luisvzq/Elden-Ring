@@ -4,6 +4,7 @@ import {
   customAttackNames,
   customAttributeNames,
   customCategoryNames,
+  customWeaponNames,
 } from "../customData/customNames.js";
 // import {
 //   fixRequiredAttributes,
@@ -118,6 +119,16 @@ const Weapons = ({ weapons }) => {
         { name: "Fai", amount: 18 },
       ];
     }
+    if (weapon.name === "Siluria's Tree") {
+      weapon.requiredAttributes = [
+        { name: "Str", amount: 27 },
+        { name: "Dex", amount: 13 },
+        { name: "Fai", amount: 20 },
+      ];
+    }
+    if (weapon.name === "Gargoyle's Black Axe") {
+      customCategoryNames[weapon.category] = "Gran Hacha";
+    }
 
     return weapon;
   });
@@ -129,12 +140,12 @@ const Weapons = ({ weapons }) => {
         return (
           <div
             key={weapon.id}
-            className="weapon font-sans bg-neutral-300 bg-opacity-40 rounded-xl shadow-2xl text-gray-900"
+            className="weapon font-sans bg-neutral-300 bg-opacity-60 rounded-xl shadow-2xl text-gray-900"
           >
-            <div className="weapon-title flex items-center justify-center h-24">
-              <h1 className="text-3xl flex justify-center m-8 text-center">
+            <div className="weapon-title flex items-center justify-center h-24 m-4 min-h-16">
+              <h1 className="text-2xl flex justify-center  text-center">
                 {" "}
-                {weapon.name}
+                {customWeaponNames[weapon.name] || weapon.name}
               </h1>
             </div>
             <h2 className="text-right m-6">
@@ -149,8 +160,8 @@ const Weapons = ({ weapons }) => {
               }
               alt={weapon.name}
             ></img>
-            <div className="dmg-scaling-req text-center m10">
-              <div className="dmg m-4">
+            <div className="dmg-scaling-req text-center my-10">
+              <div className="dmg min-h-32">
                 <h3 className="font-bold">Daño</h3>
                 {weapon.attack
                   .filter((attack) => attack.amount > 0)
@@ -160,7 +171,7 @@ const Weapons = ({ weapons }) => {
                     </p>
                   ))}
               </div>
-              <div className="scaling m-4">
+              <div className="scaling  min-h-32">
                 <h3 className="font-bold">Escalado</h3>
                 <div className="scales-with">
                   {weapon.scalesWith.map((scaling) => (
@@ -174,7 +185,7 @@ const Weapons = ({ weapons }) => {
                 </div>
               </div>
 
-              <div className="req m-4">
+              <div className="req min-h-32">
                 <h3 className="font-bold">Artibutos requeridos</h3>
                 {/* {weapon.requiredAttributes.map((req) => {
                     if (req.name && req.name !== "-") {
@@ -195,7 +206,7 @@ const Weapons = ({ weapons }) => {
                   );
                 })}
               </div>
-              <div className="m-4">
+              <div className="m-6 text-right">
                 <p>Peso: {weapon.weight}</p>
               </div>
             </div>

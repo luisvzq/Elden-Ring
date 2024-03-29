@@ -10,6 +10,7 @@ const useFetchWeapons = () => {
   const [page, setPage] = useState(0);
 
   const handleChange = (e) => {
+    setPage(0);
     setName(e.target.value);
   };
 
@@ -39,10 +40,7 @@ const useFetchWeapons = () => {
 
   const fetchWeapons = useCallback(
     async (newPage) => {
-      const dataWeapons = await eldenRingWeapons(
-        newPage || page,
-        name // Usamos el término de búsqueda actualizado del estado
-      );
+      const dataWeapons = await eldenRingWeapons(newPage || page, name);
       setPage(newPage || page);
       setSearchParams({ name: name, page: newPage || page });
 
@@ -60,7 +58,7 @@ const useFetchWeapons = () => {
   );
 
   const nextPage = () => {
-    fetchWeapons(page + 1);
+    setPage(page + 1);
   };
 
   const backPage = () => {
