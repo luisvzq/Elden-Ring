@@ -103,6 +103,11 @@ const Weapons = ({ weapons }) => {
         { name: "Dex", amount: 12 },
         { name: "Int", amount: 14 },
       ];
+      weapon.scalesWith = [
+        { name: "Str", scaling: "D" },
+        { name: "Dex", scaling: "D" },
+        { name: "Int", scaling: "E" },
+      ];
     }
     if (weapon.name === "Sword Of Night And Flame") {
       weapon.requiredAttributes = [
@@ -126,8 +131,17 @@ const Weapons = ({ weapons }) => {
         { name: "Fai", amount: 20 },
       ];
     }
+    if (weapon.name === "Serpent-hunter") {
+      weapon.requiredAttributes = [{ amount: "Ninguno" }];
+    }
     if (weapon.name === "Gargoyle's Black Axe") {
       customCategoryNames[weapon.category] = "Gran Hacha";
+    }
+    if (weapon.name === "Sacred Relic Sword") {
+      weapon.image = "/sacred_relic_sword.png";
+    }
+    if (weapon.name === "Helphen's Steeple") {
+      weapon.image = "/helphens_steeple.png";
     }
 
     return weapon;
@@ -154,6 +168,7 @@ const Weapons = ({ weapons }) => {
             {/* <h2>{weapon.category}</h2> */}
             <img
               className="mx-auto my- max-w-full h-auto"
+              style={{ width: "200px", height: "200px" }}
               src={
                 weapon.image ??
                 "https://cdn-icons-png.flaticon.com/512/5266/5266579.png"
