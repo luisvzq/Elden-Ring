@@ -1,7 +1,7 @@
-import useFetchWeapons from "../hooks/useFetchWeapons.jsx";
-import Weapons from "../components/Weapons.jsx";
-import { SearchWeapons } from "../components/SearchWeapons.jsx";
 import { useEffect } from "react";
+import useFetchWeapons from "../hooks/useFetchWeapons";
+import Weapons from "../components/Weapons";
+import { SearchWeapons } from "../components/SearchWeapons";
 
 const WeaponsPage = () => {
   const {
@@ -39,7 +39,15 @@ const WeaponsPage = () => {
         fetchWeapons={fetchWeapons}
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 m-10">
-        {weapons.length > 0 && <Weapons weapons={weapons} />}
+        {weapons.length > 0 ? (
+          <Weapons weapons={weapons} />
+        ) : (
+          <div className="col-span-full flex justify-center items-center">
+            <p className="text-2xl font-extrabold text-center">
+              No hay resultados
+            </p>
+          </div>
+        )}
         <div className="col-span-full flex justify-center">
           <div className="flex justify-between w-full max-w-xs">
             {page > 0 && (
@@ -50,7 +58,7 @@ const WeaponsPage = () => {
                 Back
               </button>
             )}
-            {page < numPages && (
+            {page < numPages - 1 && (
               <button
                 onClick={nextPage}
                 className={`px-6 py-3 bg-black hover:bg-zinc-500 text-white rounded-md font-bold  ${

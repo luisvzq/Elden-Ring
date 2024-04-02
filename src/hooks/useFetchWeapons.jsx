@@ -5,38 +5,15 @@ import eldenRingWeapons from "../API/eldenRingWeapons.js";
 const useFetchWeapons = () => {
   let [, setSearchParams] = useSearchParams();
   const [weapons, setWeapons] = useState([]);
-  // const [total, setTotal] = useState(0);
   const [name, setName] = useState("");
   const [page, setPage] = useState(0);
+  const [numPages, setNumPages] = useState(0);
+  const weaponsPerPage = 30;
 
   const handleChange = (e) => {
     setPage(0);
     setName(e.target.value);
   };
-
-  // const queryClient = useQueryClient();
-
-  // const fetchWeapons = async (newPage, newName) => {
-  //   const dataWeapons = useQuery({
-  //     queryKey: [newPage || page, newName || name],
-  //     queryFn: eldenRingWeapons(newPage || page, newName || name),
-  //   });
-  //   if (newPage) setPage(newPage);
-  //   if (newName) setName(newName);
-
-  //   setSearchParams({ name: newName || name, page: newPage || page });
-
-  //   if (dataWeapons?.data?.length > 0) {
-  //     dataWeapons?.data?.map((weapon) => {
-  //       weapon.image = weapon.image
-  //         ? weapon.image
-  //         : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
-  //       return weapon;
-  //     });
-  //   }
-  //   setWeapons(dataWeapons.data);
-  //   setTotal(dataWeapons.total);
-  // };
 
   const fetchWeapons = useCallback(
     async (newPage) => {
@@ -45,7 +22,17 @@ const useFetchWeapons = () => {
       setSearchParams({ name: name, page: newPage || page });
 
       if (dataWeapons?.length > 0) {
-        const filteredWeapons = dataWeapons.filter(
+        const totalWeapons = dataWeapons.length;
+        const startIndex = newPage * weaponsPerPage;
+        let endIndex = startIndex + weaponsPerPage;
+
+        if (newPage === numPages - 1) {
+          endIndex = totalWeapons;
+        }
+
+        const weaponsOnPage = dataWeapons.slice(startIndex, endIndex);
+
+        const filteredWeapons = weaponsOnPage.filter(
           (weapon) =>
             weapon.name &&
             weapon.name.toLowerCase().includes(name.toLowerCase())
@@ -58,11 +45,15 @@ const useFetchWeapons = () => {
         });
 
         setWeapons(filteredWeapons);
+
+        const totalPages = Math.ceil(totalWeapons / weaponsPerPage);
+        setNumPages(totalPages);
       } else {
         setWeapons([]);
+        setNumPages(0);
       }
     },
-    [page, name, setSearchParams]
+    [page, name, numPages, setSearchParams]
   );
 
   const nextPage = () => {
@@ -79,14 +70,12 @@ const useFetchWeapons = () => {
     fetchWeapons(page);
   }, [page, fetchWeapons]);
 
-  // const numPages = Math.floor(total / 30);
-
   return {
     weapons,
     page,
     nextPage,
     backPage,
-    // numPages,
+    numPages,
     handleSearch: handleChange,
     fetchWeapons,
   };
