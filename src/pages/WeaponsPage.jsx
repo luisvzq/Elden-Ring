@@ -39,7 +39,7 @@ const WeaponsPage = () => {
         fetchWeapons={fetchWeapons}
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 m-10">
-        {weapons && weapons.length > 0 && <Weapons weapons={weapons} />}
+        {weapons.length > 0 && <Weapons weapons={weapons} />}
         <div className="col-span-full flex justify-center">
           <div className="flex justify-between w-full max-w-xs">
             {page > 0 && (

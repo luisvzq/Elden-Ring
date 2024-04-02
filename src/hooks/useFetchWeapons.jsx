@@ -45,18 +45,22 @@ const useFetchWeapons = () => {
       setSearchParams({ name: name, page: newPage || page });
 
       if (dataWeapons?.length > 0) {
-        dataWeapons.forEach((weapon) => {
+        const filteredWeapons = dataWeapons.filter(
+          (weapon) =>
+            weapon.name &&
+            weapon.name.toLowerCase().includes(name.toLowerCase())
+        );
+
+        filteredWeapons.forEach((weapon) => {
           weapon.image = weapon.image
             ? weapon.image
             : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
         });
+
+        setWeapons(filteredWeapons);
+      } else {
+        setWeapons([]);
       }
-      setWeapons(dataWeapons);
-
-      console.log(dataWeapons);
-
-      // setTotal(dataWeapons.total);
-      console.log(dataWeapons.total);
     },
     [page, name, setSearchParams]
   );
