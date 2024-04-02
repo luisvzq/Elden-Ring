@@ -1,6 +1,14 @@
 import PropTypes from "prop-types";
 
 const SearchWeapons = ({ handleSearch, name }) => {
+  // console.log(
+  //   eldenRingWeapons.map((weapon) => {
+  //     name = customWeaponNames[weapon.name];
+  //     return { ...weapon, name };
+  //   })
+  // );
+  // console.log(name);
+  // Object.keys(customWeaponNames).find((key) => customWeaponNames[key] == name);
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   fetchWeapons("0");

@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import eldenRingWeapons from "../API/eldenRingWeapons";
+import eldenRingWeapons from "../API/eldenRingWeapons.js";
 
 const useFetchWeapons = () => {
   let [, setSearchParams] = useSearchParams();
   const [weapons, setWeapons] = useState([]);
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
   const [name, setName] = useState("");
   const [page, setPage] = useState(0);
 
@@ -44,15 +44,19 @@ const useFetchWeapons = () => {
       setPage(newPage || page);
       setSearchParams({ name: name, page: newPage || page });
 
-      if (dataWeapons?.data?.length > 0) {
-        dataWeapons.data.forEach((weapon) => {
+      if (dataWeapons?.length > 0) {
+        dataWeapons.forEach((weapon) => {
           weapon.image = weapon.image
             ? weapon.image
             : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
         });
       }
-      setWeapons(dataWeapons.data);
-      setTotal(dataWeapons.total);
+      setWeapons(dataWeapons);
+
+      console.log(dataWeapons);
+
+      // setTotal(dataWeapons.total);
+      console.log(dataWeapons.total);
     },
     [page, name, setSearchParams]
   );
@@ -71,14 +75,14 @@ const useFetchWeapons = () => {
     fetchWeapons(page);
   }, [page, fetchWeapons]);
 
-  const numPages = Math.floor(total / 30);
+  // const numPages = Math.floor(total / 30);
 
   return {
     weapons,
     page,
     nextPage,
     backPage,
-    numPages,
+    // numPages,
     handleSearch: handleChange,
     fetchWeapons,
   };
