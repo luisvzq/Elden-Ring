@@ -8,6 +8,7 @@ const Weapons = ({ weapons }) => {
           <div
             key={weapon.id}
             className="weapon font-sans bg-neutral-300 bg-opacity-60 rounded-xl shadow-2xl text-gray-900 p-8"
+            style={{ width: "300px", fontSize: "1.2rem" }}
           >
             <div className="weapon-title flex items-center justify-center h-24 m-4 min-h-16">
               <h1 className="text-2xl flex justify-center  text-center">

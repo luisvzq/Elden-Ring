@@ -8,53 +8,45 @@ const useFetchWeapons = () => {
   const [name, setName] = useState("");
   const [page, setPage] = useState(0);
   const [numPages, setNumPages] = useState(0);
-  const weaponsPerPage = 30;
+  const weaponsPerPage = 32;
 
   const handleChange = (e) => {
     setPage(0);
     setName(e.target.value);
   };
 
-  const fetchWeapons = useCallback(
-    async (newPage) => {
-      const dataWeapons = await eldenRingWeapons(newPage || page, name);
-      setPage(newPage || page);
-      setSearchParams({ name: name, page: newPage || page });
+  const fetchWeapons = useCallback(async () => {
+    const dataWeapons = await eldenRingWeapons(page, name);
+    if (dataWeapons?.length > 0) {
+      const filteredWeapons = dataWeapons.filter(
+        (weapon) =>
+          weapon.name && weapon.name.toLowerCase().includes(name.toLowerCase())
+      );
+      const totalWeapons = filteredWeapons.length;
+      const totalPages = Math.ceil(totalWeapons / weaponsPerPage);
+      setNumPages(totalPages);
 
-      if (dataWeapons?.length > 0) {
-        const totalWeapons = dataWeapons.length;
-        const startIndex = newPage * weaponsPerPage;
-        let endIndex = startIndex + weaponsPerPage;
-
-        if (newPage === numPages - 1) {
-          endIndex = totalWeapons;
-        }
-
-        const weaponsOnPage = dataWeapons.slice(startIndex, endIndex);
-
-        const filteredWeapons = weaponsOnPage.filter(
-          (weapon) =>
-            weapon.name &&
-            weapon.name.toLowerCase().includes(name.toLowerCase())
-        );
-
-        filteredWeapons.forEach((weapon) => {
-          weapon.image = weapon.image
-            ? weapon.image
-            : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
-        });
-
-        setWeapons(filteredWeapons);
-
-        const totalPages = Math.ceil(totalWeapons / weaponsPerPage);
-        setNumPages(totalPages);
-      } else {
-        setWeapons([]);
-        setNumPages(0);
+      const startIndex = page * weaponsPerPage;
+      let endIndex = (page + 1) * weaponsPerPage;
+      if (page === totalPages - 1) {
+        endIndex = totalWeapons; // Última página muestra los restantes
       }
-    },
-    [page, name, numPages, setSearchParams]
-  );
+
+      const weaponsOnPage = filteredWeapons.slice(startIndex, endIndex);
+
+      weaponsOnPage.forEach((weapon) => {
+        weapon.image = weapon.image
+          ? weapon.image
+          : "https://cdn-icons-png.flaticon.com/512/5266/5266579.png";
+      });
+
+      setWeapons(weaponsOnPage);
+    } else {
+      setWeapons([]);
+      setNumPages(0);
+    }
+    setSearchParams({ name: name, page: page });
+  }, [page, name, setSearchParams]);
 
   const nextPage = () => {
     setPage(page + 1);

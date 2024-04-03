@@ -22,7 +22,7 @@ import data from "../API/eldenRingWeaponsEsp.json";
 
 const eldenRingWeapons = async () => {
   try {
-    // console.log("🚀 ~ eldenRingWeapons ~ data:", data);
+    console.log("🚀 ~ eldenRingWeapons ~ data:", data);
 
     return data;
   } catch (error) {
