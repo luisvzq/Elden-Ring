@@ -27,7 +27,7 @@ const Weapons = ({ weapons }) => {
               alt={weapon.name}
             ></img>
             <div className="dmg-scaling-req text-center my-10">
-              <div className="dmg min-h-32">
+              <div className="dmg min-h-48">
                 <h3 className="font-bold">Daño</h3>
                 {weapon.attack
                   .filter((attack) => attack.amount > 0)
@@ -37,30 +37,30 @@ const Weapons = ({ weapons }) => {
                     </p>
                   ))}
               </div>
-              <div className="scaling  min-h-32">
+              <div className="scaling  min-h-48">
                 <h3 className="font-bold">Escalado</h3>
                 <div className="scales-with">
-                  {weapon.scalesWith.map((scaling) => (
-                    <p key={scaling.name}>
-                      {scaling.name}
-                      {scaling.scaling !== undefined && scaling.scaling !== "-"
-                        ? `: ${scaling.scaling}`
-                        : " Ninguno"}
+                  {weapon.scalesWith.map((scaling, index) => (
+                    <p key={index}>
+                      {scaling.name && scaling.scaling
+                        ? `${scaling.name}: ${scaling.scaling}`
+                        : "Ninguno"}
                     </p>
                   ))}
                 </div>
               </div>
 
-              <div className="req min-h-32">
-                <h3 className="font-bold">Artibutos requeridos</h3>
-                {weapon.requiredAttributes.map((req, index) => {
-                  return (
-                    <p key={`${weapon.id}-${req.name}-${index}`}>
-                      {req.name}: {req.amount}
-                    </p>
-                  );
-                })}
+              <div className="req min-h-48">
+                <h3 className="font-bold">Atributos requeridos</h3>
+                {weapon.requiredAttributes.map((req, index) => (
+                  <p key={`${weapon.id}-${req.name}-${index}`}>
+                    {req.name
+                      ? `${req.name}: ${req.amount || "Ninguno"}`
+                      : "Ninguno"}
+                  </p>
+                ))}
               </div>
+
               <div className="m-6 text-right">
                 <p>Peso: {weapon.weight}</p>
               </div>

@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import eldenRingWeapons from "../API/eldenRingWeapons.js";
+import _ from "lodash";
 
 const useFetchWeapons = () => {
   let [, setSearchParams] = useSearchParams();
@@ -18,10 +19,18 @@ const useFetchWeapons = () => {
   const fetchWeapons = useCallback(async () => {
     const dataWeapons = await eldenRingWeapons(page, name);
     if (dataWeapons?.length > 0) {
-      const filteredWeapons = dataWeapons.filter(
-        (weapon) =>
-          weapon.name && weapon.name.toLowerCase().includes(name.toLowerCase())
-      );
+      const normalizedSearch = _.toLower(_.deburr(name));
+      const filteredWeapons = dataWeapons.filter((weapon) => {
+        const normalizedWeaponName = _.toLower(_.deburr(weapon.name));
+        return normalizedWeaponName.includes(normalizedSearch);
+      });
+
+      filteredWeapons.sort((a, b) => {
+        if (a.category < b.category) return -1;
+        if (a.category > b.category) return 1;
+        return 0;
+      });
+
       const totalWeapons = filteredWeapons.length;
       const totalPages = Math.ceil(totalWeapons / weaponsPerPage);
       setNumPages(totalPages);
@@ -29,7 +38,7 @@ const useFetchWeapons = () => {
       const startIndex = page * weaponsPerPage;
       let endIndex = (page + 1) * weaponsPerPage;
       if (page === totalPages - 1) {
-        endIndex = totalWeapons; // Última página muestra los restantes
+        endIndex = totalWeapons;
       }
 
       const weaponsOnPage = filteredWeapons.slice(startIndex, endIndex);

@@ -4871,8 +4871,7 @@
     ],
     "scalesWith": [
       {
-        "name": "",
-        "scaling": "-"
+        "name": "-"
       }
     ],
     "requiredAttributes": [
@@ -7432,6 +7431,98 @@
     ],
     "category": "Daga",
     "weight": 1.5
+  },
+  {
+    "id": "17f698bacafl0i1phz3om56qt5bqof",
+    "name": "Reduvia",
+    "image": "/reduvia_dagger.png",
+    "description": "This dagger rips the flesh as it enters, inflicting blood loss with sickening efficacy. A proud testament to the success of its vicious design, this weapon is perpetually coated in blood.",
+    "attack": [
+      {
+        "name": "Físico",
+        "amount": 79
+      },
+      {
+        "name": "Magia",
+        "amount": 0
+      },
+      {
+        "name": "Fuego",
+        "amount": 0
+      },
+      {
+        "name": "Rayo",
+        "amount": 0
+      },
+      {
+        "name": "Sagrado",
+        "amount": 0
+      },
+      {
+        "name": "Crítico",
+        "amount": 110
+      },
+      {
+        "name": "Encantamiento",
+        "amount": 0
+      }
+    ],
+    "defence": [
+      {
+        "name": "Físico",
+        "amount": 38
+      },
+      {
+        "name": "Magia",
+        "amount": 22
+      },
+      {
+        "name": "Fuego",
+        "amount": 22
+      },
+      {
+        "name": "Rayo",
+        "amount": 22
+      },
+      {
+        "name": "Sagrado",
+        "amount": 22
+      },
+      {
+        "name": "Estabilidad",
+        "amount": 16
+      }
+    ],
+    "scalesWith": [
+      {
+        "name": "Fuerza",
+        "scaling": "E"
+      },
+      {
+        "name": "Destreza",
+        "scaling": "D"
+      },
+      {
+        "name": "Arcano",
+        "scaling": "D"
+      }
+    ],
+    "requiredAttributes": [
+      {
+        "name": "Fuerza",
+        "amount": 5
+      },
+      {
+        "name": "Destreza",
+        "amount": 13
+      },
+      {
+        "name": "Arcano",
+        "amount": 13
+      }
+    ],
+    "category": "Daga",
+    "weight": 2.5
   },
   {
     "id": "17f69d58e08l0i1ovazqw2hxmxgdc",
@@ -18809,82 +18900,7 @@
     "category": "Sello sagrado",
     "weight": 0
   },
-  {
-    "id": "17f698bacafl0i1phz3om56qt5bqof",
-    "name": "Sello del Árbol Áureo",
-    "image": "https://eldenring.fanapis.com/images/weapons/17f698bacafl0i1phz3om56qt5bqof.png",
-    "description": "A formless sacred seal decorated with an Erdtree crest, once the focus of religion in the Lands Between. Even though the Elden Ring is shattered, and the Erdtree has dulled from its former radiance, earnest faith continues to hold the answers. ",
-    "attack": [
-      {
-        "name": "Físico",
-        "amount": 25
-      },
-      {
-        "name": "Magia",
-        "amount": 0
-      },
-      {
-        "name": "Fuego",
-        "amount": 0
-      },
-      {
-        "name": "Rayo",
-        "amount": 0
-      },
-      {
-        "name": "Sagrado",
-        "amount": 15
-      },
-      {
-        "name": "Crítico",
-        "amount": 100
-      },
-      {
-        "name": "Encantamiento",
-        "amount": 60
-      }
-    ],
-    "defence": [
-      {
-        "name": "Físico",
-        "amount": 25
-      },
-      {
-        "name": "Magia",
-        "amount": 15
-      },
-      {
-        "name": "Fuego",
-        "amount": 15
-      },
-      {
-        "name": "Rayo",
-        "amount": 15
-      },
-      {
-        "name": "Sagrado",
-        "amount": 15
-      },
-      {
-        "name": "Estabilidad",
-        "amount": 15
-      }
-    ],
-    "scalesWith": [
-      {
-        "name": "Fe",
-        "scaling": "C"
-      }
-    ],
-    "requiredAttributes": [
-      {
-        "name": "Fe",
-        "amount": 40
-      }
-    ],
-    "category": "Sello sagrado",
-    "weight": 0
-  },
+
   {
     "id": "17f697307d1l0i1pi6qvgmp5wuhmk",
     "name": "Sello de la Comunión Dragontina",
@@ -19956,6 +19972,86 @@
     ],
     "category": "Lanza",
     "weight": 8
+  },
+  {
+    "id": "4e18a181f3404a0b97e12a0d0f6a1a52",
+    "name": "Nagakiba",
+    "image": "/nagakiba_katana.png",
+    "description": "Katana with a ferociously long blade. Signature weapon of Yura, hunter of Bloody Fingers. Reminiscent of a reinforced spear, its imposing length can be put to good use with powerful thrusting attacks.",
+    "attack": [
+      {
+        "name": "Físico",
+        "amount": 115
+      },
+      {
+        "name": "Magia",
+        "amount": 0
+      },
+      {
+        "name": "Fuego",
+        "amount": 0
+      },
+      {
+        "name": "Rayo",
+        "amount": 0
+      },
+      {
+        "name": "Sagrado",
+        "amount": 0
+      },
+      {
+        "name": "Crítico",
+        "amount": 100
+      }
+    ],
+    "defence": [
+      {
+        "name": "Físico",
+        "amount": 49
+      },
+      {
+        "name": "Magia",
+        "amount": 33
+      },
+      {
+        "name": "Fuego",
+        "amount": 33
+      },
+      {
+        "name": "Rayo",
+        "amount": 33
+      },
+      {
+        "name": "Sagrado",
+        "amount": 33
+      },
+      {
+        "name": "Estabilidad",
+        "amount": 33
+      }
+    ],
+    "scalesWith": [
+      {
+        "name": "Fuerza",
+        "scaling": "D"
+      },
+      {
+        "name": "Destreza",
+        "scaling": "C"
+      }
+    ],
+    "requiredAttributes": [
+      {
+        "name": "Fuerza",
+        "amount": 18
+      },
+      {
+        "name": "Destreza",
+        "amount": 22
+      }
+    ],
+    "category": "Katana",
+    "weight": 7
   },
   {
     "id": "17f6963cc83l0i1pk36gu3e5f8fpxm",

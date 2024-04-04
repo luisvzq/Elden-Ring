@@ -1,19 +1,6 @@
 import PropTypes from "prop-types";
 
 const SearchWeapons = ({ handleSearch, name }) => {
-  // console.log(
-  //   eldenRingWeapons.map((weapon) => {
-  //     name = customWeaponNames[weapon.name];
-  //     return { ...weapon, name };
-  //   })
-  // );
-  // console.log(name);
-  // Object.keys(customWeaponNames).find((key) => customWeaponNames[key] == name);
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   fetchWeapons("0");
-  // };
-
   return (
     <form className="flex justify-center w-3/5">
       <input
@@ -24,12 +11,6 @@ const SearchWeapons = ({ handleSearch, name }) => {
         onChange={handleSearch}
         placeholder="Escribe aquí el nombre del arma"
       />
-      {/* <button
-        type="submit"
-        className=" bg-black hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded"
-      >
-        Buscar
-      </button> */}
     </form>
   );
 };
@@ -37,7 +18,6 @@ const SearchWeapons = ({ handleSearch, name }) => {
 SearchWeapons.propTypes = {
   handleSearch: PropTypes.func,
   name: PropTypes.string,
-  fetchWeapons: PropTypes.func,
 };
 
 export { SearchWeapons };
