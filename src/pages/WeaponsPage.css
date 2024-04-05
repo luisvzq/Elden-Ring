@@ -1,0 +1,9 @@
+/* WeaponsPage.css */
+@media screen and (max-width: 640px) {
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}

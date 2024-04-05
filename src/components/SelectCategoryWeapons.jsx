@@ -13,9 +13,13 @@ export default function SelectCategoryWeapons({ handleSearch }) {
     setCategory(event.target.value);
     handleSearch(event);
   };
+  const handleSelectAll = () => {
+    setCategory("");
+    handleSearch({ target: { value: "" } });
+  };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box className="min-w-72 min-h-14 text-center">
       <FormControl fullWidth>
         <InputLabel id="category-select-label">Tipo</InputLabel>
         <Select
@@ -26,6 +30,9 @@ export default function SelectCategoryWeapons({ handleSearch }) {
           onChange={handleChange}
           sx={{ backgroundColor: "white" }}
         >
+          <MenuItem onClick={handleSelectAll} value="">
+            Todas
+          </MenuItem>
           <MenuItem value={"Alabarda"}>Alabardas</MenuItem>
           <MenuItem value={"Antorcha"}>Antorchas</MenuItem>
           <MenuItem value={"Arco"}>Arcos</MenuItem>

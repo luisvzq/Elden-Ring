@@ -3,6 +3,7 @@ import useFetchWeapons from "../hooks/useFetchWeapons";
 import Weapons from "../components/Weapons";
 import { SearchWeapons } from "../components/SearchWeapons";
 import SelectCategoryWeapons from "../components/SelectCategoryWeapons";
+import "./WeaponsPage.css";
 
 const WeaponsPage = () => {
   const {
@@ -45,13 +46,17 @@ const WeaponsPage = () => {
         <h1 className="font-extrabold text-5xl m-20 text-gray-200 bg-black p-4 text-center">
           Armas de Elden Ring
         </h1>
-        <div className="flex justify-between">
+        <div className="input-container flex justify-between sm:flex-row flex-col gap-4">
           <SearchWeapons
+            className="search-weapons-bar"
             handleSearch={handleSearchName}
             name={name}
             fetchWeapons={fetchWeapons}
           />
-          <SelectCategoryWeapons handleSearch={handleSearchCategory} />
+          <SelectCategoryWeapons
+            className="select-weapons-category"
+            handleSearch={handleSearchCategory}
+          />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 m-10">
           {weapons.length > 0 ? (
