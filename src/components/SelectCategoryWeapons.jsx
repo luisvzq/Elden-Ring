@@ -44,6 +44,7 @@ export default function SelectCategoryWeapons({ handleSearch }) {
           <MenuItem value={"Bastón de piedra refulgente"}>
             Bastones de piedra refulgente
           </MenuItem>
+          <MenuItem value={"Daga"}>Dagas</MenuItem>
           <MenuItem value={"Espada colosal"}>Espadas colosales</MenuItem>
           <MenuItem value={"Espada curva"}>Espadas curvas</MenuItem>
           <MenuItem value={"Espada de embestida"}>
