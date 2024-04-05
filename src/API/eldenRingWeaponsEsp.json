@@ -5860,6 +5860,7 @@
   },
   {
     "id": "17f69498ae3l0i1os4m19u5e478yu2",
+    "name": "Shotel",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69498ae3l0i1os4m19u5e478yu2.png",
     "description": "Curved sword with a severely hooked blade. Its attacks can slip through an enemy's guard.  Made to hunt down humans, this weapon requires high dexterity to wield efficiently. ",
     "attack": [
@@ -7091,6 +7092,7 @@
   },
   {
     "id": "17f69d42419l0i1oujp0m1csaaqdanf",
+    "name": "Reduvia",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69d42419l0i1oujp0m1csaaqdanf.png",
     "description": "Jagged dagger with a distinctive curled blade. Carried by the noble servants of the Lord of Blood. This dagger rips the flesh as it enters, inflicting blood loss with sickening efficacy. A proud testament to the success of its vicious design, this weapon is perpetually coated in blood.",
     "attack": [
@@ -7432,98 +7434,7 @@
     "category": "Daga",
     "weight": 1.5
   },
-  {
-    "id": "17f698bacafl0i1phz3om56qt5bqof",
-    "name": "Reduvia",
-    "image": "/reduvia_dagger.png",
-    "description": "This dagger rips the flesh as it enters, inflicting blood loss with sickening efficacy. A proud testament to the success of its vicious design, this weapon is perpetually coated in blood.",
-    "attack": [
-      {
-        "name": "Físico",
-        "amount": 79
-      },
-      {
-        "name": "Magia",
-        "amount": 0
-      },
-      {
-        "name": "Fuego",
-        "amount": 0
-      },
-      {
-        "name": "Rayo",
-        "amount": 0
-      },
-      {
-        "name": "Sagrado",
-        "amount": 0
-      },
-      {
-        "name": "Crítico",
-        "amount": 110
-      },
-      {
-        "name": "Encantamiento",
-        "amount": 0
-      }
-    ],
-    "defence": [
-      {
-        "name": "Físico",
-        "amount": 38
-      },
-      {
-        "name": "Magia",
-        "amount": 22
-      },
-      {
-        "name": "Fuego",
-        "amount": 22
-      },
-      {
-        "name": "Rayo",
-        "amount": 22
-      },
-      {
-        "name": "Sagrado",
-        "amount": 22
-      },
-      {
-        "name": "Estabilidad",
-        "amount": 16
-      }
-    ],
-    "scalesWith": [
-      {
-        "name": "Fuerza",
-        "scaling": "E"
-      },
-      {
-        "name": "Destreza",
-        "scaling": "D"
-      },
-      {
-        "name": "Arcano",
-        "scaling": "D"
-      }
-    ],
-    "requiredAttributes": [
-      {
-        "name": "Fuerza",
-        "amount": 5
-      },
-      {
-        "name": "Destreza",
-        "amount": 13
-      },
-      {
-        "name": "Arcano",
-        "amount": 13
-      }
-    ],
-    "category": "Daga",
-    "weight": 2.5
-  },
+
   {
     "id": "17f69d58e08l0i1ovazqw2hxmxgdc",
     "name": "Aguijón de escorpión",
@@ -7686,6 +7597,7 @@
   },
   {
     "id": "17f69a01b63l0i1ovq80hzuqcz211pn",
+    "name": "Wakizashi",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69a01b63l0i1ovq80hzuqcz211pn.png",
     "description": "Short sword with a tempering pattern on the blade. A weapon unique to warriors of the Land of Reeds. Afflicts targets with blood loss. These swords are considered auxiliary weapons. Yet, one man is known to wield this weapon in his left hand while using a full-sized katana in his right. A demonic swordsman known only as Okina.",
     "attack": [
@@ -7765,6 +7677,7 @@
   },
   {
     "id": "17f6986cfc4l0i1ovvz1l7bcfxqjc9",
+    "name": "Cinquedea",
     "image": "https://eldenring.fanapis.com/images/weapons/17f6986cfc4l0i1ovvz1l7bcfxqjc9.png",
     "description": "Short sword given to high ranking clergymen of Farum Azula. Raises potency of bestial incantations. The design celebrates a beast's five fingers, symbolic of the intelligence once granted upon their kind.",
     "attack": [
@@ -8596,6 +8509,7 @@
   },
   {
     "id": "17f699730a1l0i1oxo8gfllal3rur",
+    "name": "Katar",
     "image": "https://eldenring.fanapis.com/images/weapons/17f699730a1l0i1oxo8gfllal3rur.png",
     "description": "Imported dagger design with a rather unique handle. The blade can be swung about as the extension of one's fist.",
     "attack": [
@@ -13873,6 +13787,7 @@
   },
   {
     "id": "17f69d938dal0i1p7cva71qgpwuo6w",
+    "name": "Claymore",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69d938dal0i1p7cva71qgpwuo6w.png",
     "description": "A large sword with a long, straight blade. This heavy sword is usually wielded with two hands, but for those with enough strength, one is sufficient. In addition to the heavy sweeping attacks, it can also make a heavy piercing thrust making this a versatile weapon. ",
     "attack": [
@@ -17016,6 +16931,7 @@
   },
   {
     "id": "17f69cd8a23l0i1peugvwepjdkaqh",
+    "name": "Uchigatana",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69cd8a23l0i1peugvwepjdkaqh.png",
     "description": "A katana with a long single-edged curved blade.  A unique weapon wielded by the samurai from the Land of Reeds. The blade, with its undulating design, boasts extraordinary sharpness, and ts slash attacks cause blood loss.",
     "attack": [
@@ -17095,6 +17011,7 @@
   },
   {
     "id": "17f69728e6al0i1peyh4scwxfhl357",
+    "name": "Nagakiba",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69728e6al0i1peyh4scwxfhl357.png",
     "description": "Katana with a ferociously long blade. Signature weapon of Yura, hunter of Bloody Fingers. Reminiscent of a reinforced spear, its imposing lenth can be put to good use with powerful thrusting attacks.",
     "attack": [
@@ -19972,86 +19889,6 @@
     ],
     "category": "Lanza",
     "weight": 8
-  },
-  {
-    "id": "4e18a181f3404a0b97e12a0d0f6a1a52",
-    "name": "Nagakiba",
-    "image": "/nagakiba_katana.png",
-    "description": "Katana with a ferociously long blade. Signature weapon of Yura, hunter of Bloody Fingers. Reminiscent of a reinforced spear, its imposing length can be put to good use with powerful thrusting attacks.",
-    "attack": [
-      {
-        "name": "Físico",
-        "amount": 115
-      },
-      {
-        "name": "Magia",
-        "amount": 0
-      },
-      {
-        "name": "Fuego",
-        "amount": 0
-      },
-      {
-        "name": "Rayo",
-        "amount": 0
-      },
-      {
-        "name": "Sagrado",
-        "amount": 0
-      },
-      {
-        "name": "Crítico",
-        "amount": 100
-      }
-    ],
-    "defence": [
-      {
-        "name": "Físico",
-        "amount": 49
-      },
-      {
-        "name": "Magia",
-        "amount": 33
-      },
-      {
-        "name": "Fuego",
-        "amount": 33
-      },
-      {
-        "name": "Rayo",
-        "amount": 33
-      },
-      {
-        "name": "Sagrado",
-        "amount": 33
-      },
-      {
-        "name": "Estabilidad",
-        "amount": 33
-      }
-    ],
-    "scalesWith": [
-      {
-        "name": "Fuerza",
-        "scaling": "D"
-      },
-      {
-        "name": "Destreza",
-        "scaling": "C"
-      }
-    ],
-    "requiredAttributes": [
-      {
-        "name": "Fuerza",
-        "amount": 18
-      },
-      {
-        "name": "Destreza",
-        "amount": 22
-      }
-    ],
-    "category": "Katana",
-    "weight": 7
   },
   {
     "id": "17f6963cc83l0i1pk36gu3e5f8fpxm",
@@ -25210,6 +25047,7 @@
   },
   {
     "id": "17f69691044l0i1ptyliubsc1c29o9",
+    "name": "Urumi",
     "image": "https://eldenring.fanapis.com/images/weapons/17f69691044l0i1ptyliubsc1c29o9.png",
     "description": "This weapon made of extremely thin, flexible blades of metal is wielded like a whip by Nightfold warriors. Though in essence a whip with a cutting edge, it can also be used as a spear to pierce foes.",
     "attack": [
