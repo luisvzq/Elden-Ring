@@ -21,7 +21,6 @@ const WeaponsPage = () => {
   useEffect(() => {
     fetchWeapons();
   }, []);
-  console.log(weapons);
 
   return (
     <div
