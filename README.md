@@ -45,3 +45,7 @@ Instala las dependencias: npm install
 Inicia la aplicación: npm start
 
 Explora las diferentes armas utilizando la búsqueda y los filtros.
+
+Prueba la aplicación a través de este enlace:
+
+https://elden-ring-sigma.vercel.app/
