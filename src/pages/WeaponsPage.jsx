@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFetchWeapons from "../hooks/useFetchWeapons";
 import Weapons from "../components/Weapons";
 import { SearchWeapons } from "../components/SearchWeapons";
@@ -18,26 +18,30 @@ const WeaponsPage = () => {
     fetchWeapons,
   } = useFetchWeapons();
 
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
   useEffect(() => {
     fetchWeapons();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  const handleScroll = () => {
+    setShowScrollButton(window.scrollY > 300);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        overflow: "auto",
-      }}
-    >
+    <div>
       <div
         className="bg-cover bg-no-repeat flex flex-col items-center"
         style={{
           backgroundImage: "url('/bg.jpg')",
-          backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh",
           backgroundAttachment: "fixed",
@@ -92,6 +96,14 @@ const WeaponsPage = () => {
           </div>
         </div>
       </div>
+      {showScrollButton && (
+        <button
+          className="fixed bottom-10 right-10 bg-black text-white px-4 py-2 rounded-full shadow"
+          onClick={scrollToTop}
+        >
+          Ir arriba
+        </button>
+      )}
     </div>
   );
 };
