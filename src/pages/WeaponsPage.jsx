@@ -43,7 +43,6 @@ const WeaponsPage = () => {
         style={{
           backgroundImage: "url('/bg.jpg')",
           backgroundPosition: "center",
-          minHeight: "100vh",
           backgroundAttachment: "fixed",
         }}
       >
