@@ -38,14 +38,7 @@ const WeaponsPage = () => {
 
   return (
     <div>
-      <div
-        className="bg-cover bg-no-repeat flex flex-col items-center"
-        style={{
-          backgroundImage: "url('/bg.jpg')",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
+      <div className="bg-cover bg-no-repeat flex flex-col items-center">
         <h1 className="font-extrabold text-5xl m-20 text-gray-200 bg-black p-4 text-center">
           Armas de Elden Ring
         </h1>
